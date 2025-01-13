@@ -83,7 +83,7 @@ class LevelGen(RoomGridLevel):
             action_kinds=self.action_kinds, instr_kinds=self.instr_kinds
         )
 
-    def add_locked_room(self):
+    def add_locked_room(self, color=None):
         # Until we've successfully added a locked room
         while True:
             i = self._rand_int(0, self.num_cols)
@@ -95,7 +95,10 @@ class LevelGen(RoomGridLevel):
             if self.locked_room.neighbors[door_idx] is None:
                 continue
 
-            door, _ = self.add_door(i, j, door_idx, locked=True)
+            if color is not None:
+                door, _ = self.add_door(i, j, door_idx, color=color, locked=True)
+            else:
+                door, _ = self.add_door(i, j, door_idx, locked=True)
 
             # Done adding locked room
             break

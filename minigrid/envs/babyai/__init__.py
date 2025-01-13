@@ -13,6 +13,10 @@ from minigrid.envs.babyai.goto import (
     GoToRedBlueBall,
     GoToSeq,
 )
+from minigrid.envs.babyai.mixed_seq_levels import (
+    Level_MixedTestLocal,
+    Level_MixedTrainLocal,
+)
 from minigrid.envs.babyai.open import (
     Open,
     OpenDoor,
