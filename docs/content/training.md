@@ -14,7 +14,7 @@ Although `StableBaselines3` is fully compatible with `Gymnasium`-based environme
 
 ```python
 class MinigridFeaturesExtractor(BaseFeaturesExtractor):
-    def __init__(self, observation_space: gym.Space, features_dim: int = 512, normalized_image: bool = False) -> None:
+    def __init__(self, observation_space: gym.Space, features_dim: int = 512) -> None:
         super().__init__(observation_space, features_dim)
         n_input_channels = observation_space.shape[0]
         self.cnn = nn.Sequential(
@@ -51,6 +51,7 @@ from stable_baselines3 import PPO
 policy_kwargs = dict(
     features_extractor_class=MinigridFeaturesExtractor,
     features_extractor_kwargs=dict(features_dim=128),
+    normalize_images=False,
 )
 
 env = gym.make("MiniGrid-Empty-16x16-v0", render_mode="rgb_array")
